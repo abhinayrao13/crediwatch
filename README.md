@@ -34,6 +34,11 @@ $ cd crediwatch
 ```bash
 $ gem install bundler && bundle
 ```
+* Install node modules
+
+```bash
+$ yarn install --check-files
+```
 
 * Run migrations:
 
