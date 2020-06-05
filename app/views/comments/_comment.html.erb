@@ -1,0 +1,13 @@
+<li class="list-group-item">
+  <div class="row">
+    <div class="col">
+      <%= comment.content %>
+    </div>
+    <% if comment.user == current_user %>
+      <div class="justify-content-end">
+        <%= link_to 'Edit', edit_comment_path(comment, post_id: post.id) %>
+        <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+  </div>
+</li>

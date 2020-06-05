@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :set_post, only: [:new, :edit]
+  before_action :set_post, only: [:new, :edit, :create]
 
   # GET /comments
   # GET /comments.json
@@ -29,6 +29,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
+        ActionCable.server.broadcast "comment_channel", post_id: @post.id, content: ApplicationController.render(partial: 'comments/comment', locals: {post: @post, comment: @comment, current_user: nil})
         format.html { redirect_to posts_url, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else

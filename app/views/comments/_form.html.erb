@@ -22,6 +22,7 @@
   </div>
 
   <%= form.hidden_field :post_id, value: @post.id %>
+  <%= hidden_field_tag :post_id, @post.id %>
 
   <div class="actions">
     <%= form.submit "Save", class: "btn btn-success float-right" %>

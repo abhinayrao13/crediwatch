@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     @post.user = current_user
     respond_to do |format|
       if @post.save
+        ActionCable.server.broadcast "post_channel", content: ApplicationController.render(partial: 'posts/post', locals: {post: @post, current_user: nil})
         format.html { redirect_to posts_url, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else

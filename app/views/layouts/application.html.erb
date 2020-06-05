@@ -26,6 +26,7 @@
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
+            <div class="btn"><%= current_user.email %></div>
             <%= link_to "Sign out", crediwatch_auth.destroy_user_session_path, :method => :delete, class: "btn btn-outline-danger my-2 my-sm-0" %>
           </form>
         </div>
