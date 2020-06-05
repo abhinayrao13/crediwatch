@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col">
+    <%= link_to 'New Post', new_post_path, class: "btn btn-success float-right" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <% @posts.each do |post| %>
+      <div class="card">
+        <div class="card-header">
+          <div class="row">
+            <div class="col">
+              <%= post.content %>
+            </div>
+            <div class="justify-content-end">
+              <%= link_to 'Comment', new_comment_path(post_id: post.id) %>
+              <% if post.user == current_user %>
+                <%= link_to 'Edit', edit_post_path(post) %>
+                <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% comments = post.comments %>
+        <% if comments.present? %>
+          <ul class="list-group list-group-flush">
+            <% comments.each do |comment| %>
+              <li class="list-group-item">
+                <div class="row">
+                  <div class="col">
+                    <%= comment.content %>
+                  </div>
+                  <% if comment.user == current_user %>
+                    <div class="justify-content-end">
+                      <%= link_to 'Edit', edit_comment_path(comment, post_id: post.id) %>
+                      <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+                    </div>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+      <br>
+    <% end %>
+  </div>
+</div>
