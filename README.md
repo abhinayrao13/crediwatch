@@ -1,24 +1,24 @@
-# README
+# Overview
+The system enables users to post stock recomendations and users can post comments to them.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Pre-requirements
 
-Things you may want to cover:
+* git
 
-* Ruby version
+* rvm
 
-* System dependencies
+* ruby-2.7.0
 
-* Configuration
+# Installation guide
 
-* Database creation
+* Clone crediwatch project: git clone https://github.com/abhinayrao13/crediwatch
 
-* Database initialization
+* Clone crediwatch_auth project and make sure both the projects are in same folder: git clone https://github.com/abhinayrao13/crediwatch_auth
 
-* How to run the test suite
+* Go to crediwatch project directory: cd crediwatch
 
-* Services (job queues, cache servers, search engines, etc.)
+* Install bundler and install gem dependencies: gem install bundler && bundle
 
-* Deployment instructions
+* Run migrations: rails db:migrate
 
-* ...
+* Start rails server: rails s
